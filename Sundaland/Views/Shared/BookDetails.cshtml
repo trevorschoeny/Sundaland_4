@@ -1,0 +1,35 @@
+﻿@model Book
+
+<div class="col col-lg-3 mb-4">
+    <div class="card">
+        <div class="card-body">
+
+            <!-- Header -->
+            <h5 class="card-title">@Model.Title</h5>
+            <h6 class="card-subtitle mb-2 text-muted">by @Model.Author</h6>
+            <ul class="list-group list-group-flush">
+
+                <!-- Details -->
+                <li class="list-group-item fw-light">Category: @Model.Category</li>
+                <li class="list-group-item fw-light">Length: @Model.PageCount Pages</li>
+                <li class="list-group-item fst-italic">$@Model.Price</li>
+
+                <!-- Form -->
+                <li class="list-group-item">
+                    <form method="post" asp-page="/Cart">
+                        <input type="hidden" asp-for="@Model.BookId" />
+                        <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+
+                        <div class="d-flex justify-content-center mt-3">
+                            <button class="btn btn-success">
+                                <p class="fw-bold m-0 p-0">Add to Cart</p>
+                            </button>
+                        </div>
+
+                    </form>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>

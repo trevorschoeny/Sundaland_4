@@ -1,0 +1,37 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model BookListViewModel
+
+<!-- Masthead -->
+<header class="masthead-small">
+    <div class="container">
+        <div class="masthead-small-heading">BOOK LIST</div>
+        <div class="masthead-small-subheading">Catalog of Professor Hilton's Favorite Books</div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-2 pt-4">
+            <vc:categories></vc:categories>
+        </div>
+
+        <div class="col">
+            <div class="row m-5">
+                @foreach (Book b in Model.Books)
+                {
+                    <partial name="BookDetails" model="b" />
+                }
+            </div>
+            <div class="row justify-content-center">
+                <div class="col">
+                    <div page-blah="@Model.PageInfo" page-action="Booklist" page-class="btn"
+                         page-class-normal="btn-outline-secondary" page-class-selected="btn-primary"
+                         page-class-enabled="true"
+                         class="btn-group pull-right m-1"></div>
+                </div>
+            </div>
+        </div>
+    </div>

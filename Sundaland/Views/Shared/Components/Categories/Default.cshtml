@@ -1,0 +1,23 @@
+﻿@model IEnumerable<string>
+
+
+<div class="container">
+
+    <div class="row pb-4 pt-4">
+        <a class="btn @(ViewBag.SelectedCategory != null ? "btn-outline-primary" : "btn-primary")"
+           asp-controller="Home" asp-action="Booklist" asp-route-category="" asp-route-pageNum="1">All</a>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            @foreach (string b in Model)
+            {
+                <div class="row pb-1">
+                    <a class="btn @(ViewBag.SelectedCategory == b ? "btn-secondary" : "btn-outline-secondary")"
+                       asp-controller="Home" asp-action="Booklist"
+                       asp-route-category="@b" asp-route-pageNum="1">@b</a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
